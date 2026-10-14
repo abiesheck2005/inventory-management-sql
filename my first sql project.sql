@@ -12,7 +12,7 @@ USE inventory_db;
 
 #creating tables
 
-/* categori table */
+/* category table */
 CREATE TABLE categories (
     category_id    INT AUTO_INCREMENT PRIMARY KEY,
     category_name  VARCHAR(50) NOT NULL UNIQUE
@@ -82,7 +82,7 @@ TRIGGERS  (create BEFORE inserting data so stock updates itself)
    */
 DELIMITER $$
 
--- 3a. When goods are received: fill cost if empty
+-- a. When goods are received: fill cost if empty
 CREATE TRIGGER trg_stock_in_before
 BEFORE INSERT ON stock_in
 FOR EACH ROW
@@ -93,7 +93,7 @@ BEGIN
     END IF;
 END$$
 
--- 3b. When goods are received: increase stock
+-- b. When goods are received: increase stock
 CREATE TRIGGER trg_stock_in_after
 AFTER INSERT ON stock_in
 FOR EACH ROW
@@ -105,7 +105,7 @@ BEGIN
     
 END$$
 
--- 3c. Before a sale: block it if stock is not enough, and fill the price
+-- c. Before a sale: block it if stock is not enough, and fill the price
 CREATE TRIGGER trg_sales_before
 BEFORE INSERT ON sales
 FOR EACH ROW
@@ -126,7 +126,7 @@ BEGIN
     END IF;
 END$$
 
--- 3d. After a sale: reduce stock
+-- d. After a sale: reduce stock
 CREATE TRIGGER trg_sales_after
 AFTER INSERT ON sales
 FOR EACH ROW

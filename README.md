@@ -1,4 +1,5 @@
-This is my first end-to-end SQL project: a small shop's stock room, built in MySQL.
+This is my first end-to-end SQL project: that manages products, suppliers,
+customers, stock received and sales.
 
 It answers everyday questions like What's running low? What sells best? Who are my top customers?
 
